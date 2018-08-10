@@ -19,13 +19,13 @@ public class WalletTransfer {
     public static void main(String args[]) {
 
         try {
-            web3 = Web3j.build(new HttpService("http://127.0.0.1:7545"));
+            web3 = Web3j.build(new HttpService("https://ropsten.infura.io/JOEnl84Gm76oX0RMUrJB"));
             Web3ClientVersion web3ClientVersion = web3.web3ClientVersion().sendAsync().get();
             String clientVersion = web3ClientVersion.getWeb3ClientVersion();
             log.info("clientVersion : " + clientVersion);
 
             //String keyStoreDir = WalletUtils.getDefaultKeyDirectory();
-            Credentials credentials = WalletUtils.loadCredentials("aaaaaaaa", "/Users/yves/ethereum/privateChain/keystore/UTC--2018-05-22T11-48-03.459005936Z--0df14334e094acc0197d52a415d799c2b8a3b04b" );
+            Credentials credentials = WalletUtils.loadCredentials("ionc", "/Users/yves/Library/Ethereum/UTC--2018-08-10T00-57-14.520000000Z--5955a4af833de085e670426f9ddf5b17e19f3c63.json" );
             System.out.println(credentials.getAddress());
             System.out.println(credentials.getEcKeyPair().getPublicKey().toString(16));
             System.out.println(credentials.getEcKeyPair().getPrivateKey().toString(16));
@@ -35,7 +35,7 @@ public class WalletTransfer {
             TransactionReceipt transferReceipt = org.web3j.tx.Transfer.sendFunds(
                     web3, credentials,
                     "0x18f54aade5dde6ce3772b78b293d76c25d874f92",  // you can put any address here
-                    BigDecimal.ONE, Convert.Unit.ETHER)  // 1 wei = 10^-18 Ether
+                    BigDecimal.ONE, Convert.Unit.WEI)  // 1 wei = 10^-18 Ether
                     .send();
             System.out.println(transferReceipt.getTransactionHash());
             log.info("Transaction complete, view it at https://rinkeby.etherscan.io/tx/"

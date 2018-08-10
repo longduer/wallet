@@ -58,15 +58,6 @@ public class TokenClient {
         BigInteger balance = getTokenBalance(web3j, fromAddress, contractAddress);
         System.out.println("查询账户余额: "+Convert.fromWei(new BigDecimal(balance), Convert.Unit.ETHER) + " IONC");
 
-        //转账交易
-//        sendTokenTransaction(
-//                fromAddress,
-//                "ionc",
-//                toAddress,
-//                contractAddress,
-//                BigInteger.valueOf(1*Math.round(Math.pow(10,18)))
-//        );
-
         //Token名称
         System.out.println("Token名称: "+getTokenName(web3j, contractAddress));
         //代币精度
@@ -83,6 +74,16 @@ public class TokenClient {
                 BigInteger.valueOf(1*Math.round(Math.pow(10,18)))
                 )
         );
+
+
+        //转账交易
+//        sendTokenTransaction(
+//                fromAddress,
+//                "ionc",
+//                toAddress,
+//                contractAddress,
+//                BigInteger.valueOf(1*Math.round(Math.pow(10,18)))
+//        );
 //        //计算合约地址
 //        System.out.println(calculateContractAddress("0x6c0f49aF552F2326DD851b68832730CB7b6C0DaF".toLowerCase(), 294));
     }
